@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Theatre Booking Page</title>
+
+<link rel="stylesheet" href="stylesheet.css">
+
+<script>
+function validateForm() {
+
+    var name = document.forms["bookingForm"]["name"].value;
+    var email = document.forms["bookingForm"]["email"].value;
+    var phone = document.forms["bookingForm"]["phone"].value;
+    var tickets = document.forms["bookingForm"]["tickets"].value;
+    var age = document.forms["bookingForm"]["age"].value;
+    var terms = document.forms["bookingForm"]["terms"].checked;
+var showDate = document.forms["bookingForm"]["showdate"].value;
+
+
+    var gender = document.querySelector('input[name="gender"]:checked');
+
+    if (name == "") {
+        alert("Please enter your name");
+        return false;
+    }
+
+    if (gender == null) {
+        alert("Please select your gender");
+        return false;
+    }
+
+    if (email == "") {
+        alert("Please enter your email");
+        return false;
+    }
+
+  if (gender == null) {
+        alert("Please select your gender");
+        return false;
+    }
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address");
+        return false;
+    }
+
+    if (phone == "") {
+        alert("Please enter phone number");
+        return false;
+    }
+
+    if (phone.length != 10) {
+        alert("Phone number must be 10 digits");
+        return false;
+    }
+
+    if (tickets == "" || tickets <= 0) {
+        alert("Number of seats must be greater than 0");
+        return false;
+    }
+
+    if (age == "" || age < 5) {
+        alert("Age must be 5 or above");
+        return false;
+    }
+
+if (showDate == "") {
+    alert("Please select show date");
+    return false;
+}
+
+var today = new Date();
+today.setHours(0,0,0,0);   // remove time
+
+var selectedDate = new Date(showDate);
+
+if (selectedDate < today) {
+    alert("Past dates are not allowed");
+    return false;
+}
+
+
+    if (!terms) {
+        alert("Please accept Terms and Conditions");
+        return false;
+    }
+
+    alert("Booking Successful!");
+    return true;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+<center>
+
+<h2>Welcome to our Booking Page</h2>
+
+<form name="bookingForm" onsubmit="return validateForm()">
+
+<table class="booking-table">
+
+<tr>
+<td>Name:</td>
+<td><input type="text" name="name" placeholder="Enter your name"></td>
+</tr>
+
+<tr>
+<td>Email:</td>
+<td><input type="text" name="email" placeholder="Enter your email"></td>
+</tr>
+
+<tr>
+<td>Gender:</td>
+<td>
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<input type="radio" name="gender" value="Other"> Other
+</td>
+</tr>
+
+<tr>
+<td>Phone No:</td>
+<td><input type="number" name="phone" placeholder="Enter phone number"></td>
+</tr>
+
+<tr>
+<td>Age:</td>
+<td><input type="number" name="age" placeholder="Enter your age"></td>
+</tr>
+
+<tr>
+<td>Number of Tickets:</td>
+<td><input type="number" name="tickets" placeholder="Enter seats"></td>
+</tr>
+
+<tr>
+<td>Movie:</td>
+<td>
+<select>
+<option>DNA</option>
+<option>KGF</option>
+<option>Varisu</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Show Date:</td>
+<td><input type="date" name="showdate"></td>
+</tr>
+
+<tr>
+<td>Show Time:</td>
+<td>
+<select>
+<option>10:00 AM</option>
+<option>2:00 PM</option>
+<option>6:30 PM</option>
+<option>9:30 PM</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Screen Type:</td>
+<td>
+<select>
+<option>Normal</option>
+<option>Premium</option>
+<option>VIP</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Payment Type:</td>
+<td>
+<select>
+<option>UPI</option>
+<option>Net Banking</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<input type="checkbox" name="terms"> I agree to the Terms and Conditions
+</td>
+</tr>
+
+<tr>
+<td><input type="reset"></td>
+<td><input type="submit"></td>
+</tr>
+
+</table>
+</form>
+
+<h3>Reminder:</h3>
+<p>Please arrive 15 minutes before the show.</p>
+
+<hr>
+<h3><a href="home.html">Back to Home</a></h3>
+
+</center>
+</div>
+
+</body>
+</html>
